@@ -1,0 +1,9 @@
+{
+  "firebase": "bretchat",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

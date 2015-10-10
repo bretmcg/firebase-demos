@@ -1,0 +1,70 @@
+<html>
+<head>
+  <!-- Include Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+
+  <!-- jQuery -->
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  <link rel="stylesheet" type="text/css" href="example.css">
+</head>
+<body>
+
+<!-- CHAT MARKUP -->
+<div class="example-chat l-demo-container">
+  <header>Firebase Chat Demo</header>
+
+  <div class='example-chat-toolbar'>
+    <label for="nameInput">Username:</label>
+    <input type='text' id='nameInput' placeholder='enter a username...'>
+  </div>
+
+  <ul id='example-messages' class="example-chat-messages"></ul>
+
+  <footer>
+    <input type='text' id='messageInput'  placeholder='Type a message...'>
+  </footer>
+</div>
+<script>
+  // reference to firebase
+  var ref = new Firebase("https://bretchat.firebaseio.com");
+
+  // DOM elements
+  var messageField = $('#messageInput');
+  var nameField = $('#nameInput');
+  var messageList = $('#example-messages');
+
+  messageField.keypress(function(e) {
+    if (e.keyCode==13) {
+      var message = messageField.val();
+      var username = nameField.val();
+
+      //ref.set(message);
+      ref.push({name: username, text: message});
+
+      // save data!
+      messageField.val('');
+    }
+  });
+
+  // Callback for each chat message
+  ref.on('child_added', function(snapshot) {
+    var data = snapshot.val();
+    var username = data.name;
+    var message = data.text;
+
+    var nameElement = $("<strong class='example-chat-username'></strong>");
+    nameElement.text(username);
+    var messageElement = $("<li>");
+    messageElement.text(message).prepend(nameElement);
+
+    // Add message
+    messageList.append(messageElement);
+
+    // scroll to bottom.
+    messageList[0].scrollTop = messageList[0].scrollHeight;
+
+    // DEMO: DEPLOY LIVE!
+  });
+</script>
+</body>
+</html>
