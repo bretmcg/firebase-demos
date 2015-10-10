@@ -53,6 +53,16 @@
     width: 100%;
     font-weight: normal;
     outline: none; }
+  .example-chat button {
+    box-sizing: border-box;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    padding: 0px 10px;
+    height: 30px;
+    font-size: 18px;
+    width: 100%;
+    font-weight: normal;
+     }
   .example-chat .example-chat-toolbar {
     background-color: #FFF;
     padding: 10px;
@@ -94,6 +104,17 @@
     .example-chat footer input {
       border: 1px solid #ced3db;
       height: 40px; }
+
+.status-online-true, .status-online-false {
+  width: 25px;
+  height: 25px;
+  float: right;
+  background-color: #0f0;
+}
+
+.status-online-false {
+  background-color: #f00;
+}
 
 #colorholder {
   width: 480px;
