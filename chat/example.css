@@ -63,6 +63,9 @@
     width: 100%;
     font-weight: normal;
      }
+  .example-chat button.upvote {
+    width: 100px;
+  }
   .example-chat .example-chat-toolbar {
     background-color: #FFF;
     padding: 10px;
