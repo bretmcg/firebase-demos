@@ -1,0 +1,40 @@
+Send messsage directly to device
+-----------------------------------------------------------
+curl -X POST -H "Authorization: key={API_KEY}" -H "Content-Type: application/json" -d '{
+  "notification": {
+    "title": "Hello",
+    "body": "World!",
+    "icon": "/firebase-logo.png",
+    "click_action": "http://localhost:8081"
+  },
+  "to": "{REG_TOKEN}"
+}' "https://fcm.googleapis.com/fcm/send"
+
+
+
+Subscribe device to topic
+-----------------------------------------------------------
+curl -X POST -H "Authorization: key={API_KEY}" -H "Content-Type: application/json" -d '{
+}' https://iid.googleapis.com/iid/v1/{REG_TOKEN}/rel/topics/{TOPIC_NAME}
+
+
+Publish to a topic (notification message)
+-----------------------------------------------------------
+curl -X POST -H "Authorization: key={API_KEY}" -H "Content-Type: application/json" -d '{
+  "to": "/topics/{TOPIC}",
+  "notification": {
+    "title": "Hello",
+    "body": "World",
+    "icon": "/firebase-logo.png",
+    "click_action": "http://localhost:5000"
+  },
+}' https://fcm.googleapis.com/fcm/send
+
+Publish to a topic (data message, no automatic display notification)
+--------------------------------------------------------------------
+curl -X POST -H "Authorization: key={API_KEY}" -H "Content-Type: application/json" -d '{
+  "to": "/topics/{TOPIC}",
+  "data": {
+    "message": "Hello, world!",
+  },
+}' https://fcm.googleapis.com/fcm/send
