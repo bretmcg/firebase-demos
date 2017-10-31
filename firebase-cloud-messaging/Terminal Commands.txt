@@ -1,21 +1,29 @@
+
+{API_KEY} 
+  --> https://console.firebase.google.com/project/hack-hackers-nyc/settings/cloudmessaging
+
+{REG_TOKEN} --> from browser console
+
+{TOPIC_NAME} --> e.g. news, sports, international, etc
+
 Send messsage directly to device
 -----------------------------------------------------------
-curl -X POST -H "Authorization: key={API_KEY}" -H "Content-Type: application/json" -d '{
+curl -X POST -H "Authorization: key=AIzaSyCWgtkJNOvlIupEX-3H_jZ9J7R0m1Z9wN4" -H "Content-Type: application/json" -d '{
   "notification": {
-    "title": "Hello",
-    "body": "World!",
+    "title": "BREAKING NEWS",
+    "body": "Emily Blunt CRUSHES at box office AGAIN",
     "icon": "/firebase-logo.png",
     "click_action": "http://localhost:8081"
   },
-  "to": "{REG_TOKEN}"
+  "to": "/topics/movies"
 }' "https://fcm.googleapis.com/fcm/send"
 
 
 
-Subscribe device to topic
+Subscribe user/device to topic
 -----------------------------------------------------------
-curl -X POST -H "Authorization: key={API_KEY}" -H "Content-Type: application/json" -d '{
-}' https://iid.googleapis.com/iid/v1/{REG_TOKEN}/rel/topics/{TOPIC_NAME}
+curl -X POST -H "Authorization: key=AIzaSyCWgtkJNOvlIupEX-3H_jZ9J7R0m1Z9wN4" -H "Content-Type: application/json" -d '{
+}' https://iid.googleapis.com/iid/v1/cDo3g4N-AoA:APA91bEGmi--WItoKdsb_Z9qoXnwiuEzNbGNDbVAKPSQTPoWaYZ7XdNhIxWLDeU6ug5qqND7qS-4jHqWI-ZcqGRfSDhMm_c7wu1OIJ8Dk20A___zHS1dzGZrmP_pSrF9h_YRveCXlbMy/rel/topics/movies
 
 
 Publish to a topic (notification message)

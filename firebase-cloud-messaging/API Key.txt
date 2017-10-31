@@ -1,0 +1,10 @@
+AIzaSyCWgtkJNOvlIupEX-3H_jZ9J7R0m1Z9wN4
+
+var config = {
+  apiKey: "AIzaSyB56Ja_HTm0o3_kqIN8zkHIVQ5cH_m0Csk",
+  authDomain: "bret-google.firebaseapp.com",
+  databaseURL: "https://bret-google.firebaseio.com",
+  storageBucket: "project--200264200989872459.appspot.com",
+  messagingSenderId: "244962545401"
+};
+firebase.initializeApp(config);
